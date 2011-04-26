@@ -26,10 +26,8 @@ canvas {border: 1pt solid black;}
 </div>
 <div class="example">
 <p>Commands include:</p>
-<p><code>setPosition <em>x</em> <em>y</em></code></p>
-<p><code>setDirection <em>degrees</em></code></p>
-<p><code>penUp</code></p>
-<p><code>penDown</code></p>
+<p><code>penup</code></p>
+<p><code>pendown</code></p>
 <p><code>move <em>pixels</em></code></p>
 <p><code>turn <em>degrees</em></code></p>
 <p><code>clear</code></p>
@@ -37,14 +35,18 @@ canvas {border: 1pt solid black;}
 </body>
 <script type="text/javascript"><!--
 (function () {
+drawFractal(document.getElementsByClassName("fractal")[0]);
+
 var canvas = document.getElementById('interactivecanvas');
 var commandline = document.getElementById('commandline');
-var view = new CanvasView(canvas);
+var view = new Turtle.Pen(
+    new Turtle({x: Math.floor(canvas.width/2), y: Math.floor(canvas.height/2)}),
+    canvas.getContext('2d'));
 var t = view.turtle;
 function interpreter () {
     var args = commandline.value.split(/[ ,.()]/);
     var command = args.shift();
-    if (typeof(view[command]) == 'function') {
+    if (typeof(view[command]) === 'function') {
         view[command].apply(view, args);
     }
     commandline.focus();
