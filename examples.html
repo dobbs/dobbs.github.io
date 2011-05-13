@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Turtle Graphics Examples: von Koch snowflake, peano curve, and an interactive shell</title>
+<script type="text/javascript" src="turtle.js"></script>
+<script type="text/javascript" src="fractal.js"></script>
+<script type="text/javascript" src="interactive.js"></script>
+<style type="text/css">
+canvas {border: 1pt solid black;}
+.interactive {float: left; margin-right: 1em;}
+.interactive-docs p {margin: 0;}
+.interactive-docs p:first-child {margin-bottom: 1em;}
+.remote-editor {clear: both;}
+</style>
+</head>
+<body>
+<div class="playback">
+<canvas class="fractal" width="205" height="110"></canvas>
+</div>
+<div class="interactive">
+<canvas id="interactivecanvas" width="205" height="200"></canvas>
+<form><input id="commandline" type="text" size="36" name="commandline"></form>
+</div>
+<div class="interactive-docs">
+<p>Commands include:</p>
+<p><code>penup</code></p>
+<p><code>pendown</code></p>
+<p><code>move <em>pixels</em></code></p>
+<p><code>turn <em>degrees</em></code></p>
+<p><code>clear</code></p>
+</div>  
+<div class="remote-editor">
+  <form>
+  <label for="url">URL where source code is being edited</label>
+  <input id="remote-url" type="text" name="url" size="80" value="https://github.com/dobbs/conways-game-of-life/wiki/js" />
+  <input type="submit" value="go get it" />
+  </form>
+</div>
+<div id="remote-code"></div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+(function (window, document, undefined) {
+Turtle.drawFractal(document.getElementsByClassName("fractal")[0]);
+Turtle.interactiveCanvas(
+    document.getElementById("interactivecanvas").getContext('2d'),
+    document.getElementById("commandline")
+);
+var url = $("#remote-url").val(); 
+console.log('thing: ', url);
+$.get(url, {}, function (data, status, xhr) {
+  console.log('zipp');
+  console.log(status);
+});
+return;
+})(this, this.document);
+</script>
+</html>
