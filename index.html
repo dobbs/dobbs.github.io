@@ -1,15 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <title>Eric Dobbs</title>
 <script type="text/javascript" src="https://github.com/dobbs/turtle/raw/master/turtle.js"></script>
 <script type="text/javascript" src="https://github.com/dobbs/turtle/raw/master/fractal.js"></script>
 <script type="text/javascript" src="https://github.com/dobbs/turtle/raw/master/interactive.js"></script>
+<script type="text/javascript" src="https://github.com/dobbs/turtle/raw/master/editor.js"></script>
 <style type="text/css">
 canvas {border: 1pt solid black;}
-.interactive {float: left; margin-right: 1em;}
-.example p {margin: 0;}
-.example p:first-child {margin-bottom: 1em;}
+.interactivedocs p {margin: 0;}
+#js * {display:block;}
+#editor {
+  font-family: "Courier New", Courier, monospace;
+  width: 30em; padding: .5em; margin-top: 1em; border: 1pt solid black;
+}
+#versions {margin-bottom: 1em;}
+#versions a {display: block;}
 </style>
 </head>
 <body>
@@ -24,7 +30,7 @@ canvas {border: 1pt solid black;}
 <canvas id="interactivecanvas" width="205" height="200"></canvas>
 <form><input id="commandline" type="text" size="36" name="commandline"></form>
 </div>
-<div class="example">
+<div class="interactivedocs">
 <p>Commands include:</p>
 <p><code>penup</code></p>
 <p><code>pendown</code></p>
@@ -32,6 +38,45 @@ canvas {border: 1pt solid black;}
 <p><code>turn <em>degrees</em></code></p>
 <p><code>clear</code></p>
 </div>  
+<form>
+<textarea id="editor" cols="60" rows="40">
+var T = Turtle.interactiveTurtle;
+
+T.polygon = function polygon(sides, pixels) {
+    var angle = 360/parseInt(sides);
+    for(var i = sides; i--;) {
+        this.move(pixels);
+        this.turn(angle);
+    }
+    return;
+};
+
+T.flower = function flower() {
+    for(var i = 5; i--;) {
+        this.polygon(3, 30);
+        this.turn(360/5);
+    }
+    T.turn(50);
+    for(var i = 5; i--;) {
+        this.polygon(3, 50);
+        this.turn(360/5);
+    }
+};
+
+T.spiral = function spiral(steps, pixels, degrees) {
+    if (steps > 0) {
+        this.move(pixels);
+        this.turn(degrees);
+        this.spiral(parseInt(steps) - 1, parseInt(pixels) + 3, parseInt(degrees));
+    }   
+};
+
+</textarea>
+<input type="submit" value="run"></input>
+</form>
+<div id="versions">
+  <a href="" class="example version">Versions</a>
+</div>
 </body>
 <script type="text/javascript">
 (function (window, document, undefined) {
@@ -40,6 +85,11 @@ Turtle.interactiveCanvas(
     document.getElementById("interactivecanvas").getContext('2d'),
     document.getElementById("commandline")
 );
+
+var editor = document.getElementById("editor");
+var versions = document.getElementById("versions");
+window.editor = new Turtle.Editor(editor, window.localStorage, versions);
+window.editor.versionReady();
 return;
 })(this, this.document);
 </script>
