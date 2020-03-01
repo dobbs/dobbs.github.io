@@ -1,0 +1,39 @@
+{
+  "title": "Hello World",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "b6d4308ced44cbd3",
+      "text": "Conventional first step in a new programming tool."
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "Hello World",
+        "story": []
+      },
+      "date": 1583101622165
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "b6d4308ced44cbd3"
+      },
+      "id": "b6d4308ced44cbd3",
+      "type": "add",
+      "date": 1583101624006
+    },
+    {
+      "type": "edit",
+      "id": "b6d4308ced44cbd3",
+      "item": {
+        "type": "paragraph",
+        "id": "b6d4308ced44cbd3",
+        "text": "Conventional first step in a new programming tool."
+      },
+      "date": 1583101655094
+    }
+  ]
+}

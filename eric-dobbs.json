@@ -1,0 +1,64 @@
+{
+  "title": "Eric Dobbs",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "417ff7407c6aa30a",
+      "text": "Wiki and systems adventurer."
+    },
+    {
+      "type": "roster",
+      "id": "efe868d0f67e2c74",
+      "text": "ROSTER wiki.dbbs.co/eric-dobbs"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "Eric Dobbs",
+        "story": []
+      },
+      "date": 1583101572319
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "417ff7407c6aa30a"
+      },
+      "id": "417ff7407c6aa30a",
+      "type": "add",
+      "date": 1583101574165
+    },
+    {
+      "type": "edit",
+      "id": "417ff7407c6aa30a",
+      "item": {
+        "type": "paragraph",
+        "id": "417ff7407c6aa30a",
+        "text": "Wiki and systems adventurer."
+      },
+      "date": 1583101591766
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "efe868d0f67e2c74"
+      },
+      "id": "efe868d0f67e2c74",
+      "type": "add",
+      "after": "417ff7407c6aa30a",
+      "date": 1583101595444
+    },
+    {
+      "type": "edit",
+      "id": "efe868d0f67e2c74",
+      "item": {
+        "type": "roster",
+        "id": "efe868d0f67e2c74",
+        "text": "ROSTER wiki.dbbs.co/eric-dobbs"
+      },
+      "date": 1583101613066
+    }
+  ]
+}
